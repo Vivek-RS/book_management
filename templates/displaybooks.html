@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}
+Display
+{% endblock %}
+{% block content %}
+<table class="table table-bordered">
+  <thead>
+    <tr>
+        <th scope="col">Book Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Published Date</th>
+        <th scope="col">Cost</th>
+        <th scope="col">Category</th>
+        <th scope="col">Author</th>
+         <th scope="col">Actions</th>
+
+    </tr>
+    </thead>
+
+     <tbody>
+     {% for book in books %}
+    <tr>
+        <td>{{ book.book_name }}</td>
+        <td>{{ book.description }}</td>
+        <td>{{ book.published_date }}</td>
+        <td>{{ book.price }}</td>
+        <td>{{ book.category }}</td>
+        <td>{{ book.author }}</td>
+        <td><a href="{% url 'edit_books' book.id %}" class="btn btn-link">Edit</a>
+            <a href="{% url 'delete_books' book.id %}" class="btn btn-link">Delete</a>
+
+        </td>
+
+
+    </tr>
+     {% endfor %}
+  </tbody>
+
+</table>
+{% endblock %}

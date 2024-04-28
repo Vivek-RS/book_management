@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}
+Enter books
+{% endblock %}
+{% block content %}
+<div class="container">
+<form action="{% url 'submit_books' %}"  method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+    <label for="bookname" class="form-label">Book Name:</label>
+    <input type="text" id="bookname" name="bookname" class="form-control" required>
+  </div>
+  <div class="mb-3">
+    <label for="description" class="form-label">Description:</label>
+    <textarea id="description" name="description" class="form-control" rows="3" required></textarea>
+  </div>
+  <div class="mb-3">
+    <label for="published_date" class="form-label">Published Date:</label>
+    <input type="date" id="published_date" name="published_date" class="form-control" required>
+  </div>
+  <div class="mb-3">
+    <label for="price" class="form-label">Price:</label>
+    <input type="number" id="price" name="price" class="form-control" step="0.01" required>
+  </div>
+  <div class="mb-3">
+    <label for="category" class="form-label">Category:</label>
+    <input type="text" id="category" name="category" class="form-control" required>
+  </div>
+   <div class="mb-3">
+        <label for="author" class="form-label">Author:</label>
+        <select id="author" name="author" class="form-control" required>
+            {% for author in authors %}
+                <option value="{{ author.author_name }}">{{ author.author_name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+{% endblock %}
