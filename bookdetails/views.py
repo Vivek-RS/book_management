@@ -6,6 +6,8 @@ from django.contrib.auth import authenticate, login, logout
 
 def home(request):
     return render(request,'base.html')
+ def blank(request):
+     pass
 
 def addbooks(request):
     authors = Author.objects.all()
